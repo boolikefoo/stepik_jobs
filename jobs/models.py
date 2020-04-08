@@ -8,7 +8,7 @@ class Company(models.Model):
     location = models.CharField(max_length=64)
     logo = models.URLField()
     description = models.TextField()
-    employee_count = models.IntegerField()
+    employee_count = models.IntegerField(null=True)
 
 
 class Specialty(models.Model):

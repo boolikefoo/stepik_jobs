@@ -1,11 +1,15 @@
+from django.db import models
 from django.views import View
 from django.shortcuts import render
+from jobs.models import Company, Specialty, Vacancy
 
-# Create your views here.
 
-context = {}
+context = {'text': 'some text here'}
 
 class MainView(View):
+    specialties = Specialty.objects.all()
+    context.update({'spetialties' : specialties })
+    print(context)
     def get(self, request):
         return render(request, 'index.html', context=(context))
 
