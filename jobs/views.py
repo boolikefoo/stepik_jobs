@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Count
 from django.views import View
 from django.shortcuts import render
 from jobs.models import Company, Specialty, Vacancy
