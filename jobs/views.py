@@ -17,7 +17,7 @@ def morphyF(word, number):
     return new_word
 
 
-class MainView(View):
+class MainView(View):    
     context.update({'spetialties' : Specialty.objects.all(), 'companies' : Company.objects.all(),})
 
     def get(self, request):
