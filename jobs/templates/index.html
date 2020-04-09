@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Тут заголовок {% endblock title %}
+{% block title %} Джуманджи {% endblock title %}
 {% block header %} {{ block.super }} {% endblock header %}
 {% block content %}
   <main class="container mt-3">
@@ -30,30 +30,35 @@
     <section class="mt-5 pt-3">
       <h2 class="h2 font-weight-normal text-center mb-5">Вакансии по рубрикам</h2>
       <div class="row mb-0">
-      {{ spetialties }}
+      
+        
+        {% for specialty in spetialties %}
         <div class="col-6 col-md-6 col-lg-3">
           <div class="card pt-4 text-center mb-4">
-            <img class="mx-auto d-block" src="https://place-hold.it/80x80" width="80" height="80" alt="">
+            <img class="mx-auto d-block" src="{{ specialty.picture }}" width="80" height="80" alt="">
             <div class="card-body">
-              <p class="card-text mb-2">Тестирование</p>
-              <p class="card-text"><a href="#">5 вакансий</a></p>
+              <p class="card-text mb-2">{{ specialty.title }} </p>
+              <p class="card-text"><a href="{% url 'specialty_url' specialty_=specialty.code %}">count вакансий</a></p>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
     </section>
 
     <section class="my-5 pt-3">
       <h2 class="h2 font-weight-normal text-center mb-5">Нам доверяют лучшие компании</h2>
       <div class="row mb-0">
+        {% for company in companies %}
         <div class="col-6 col-md-6 col-lg-3">
           <div class="card pt-4 text-center mb-4">
-            <a href="#"><img class="mx-auto d-block" src="https://place-hold.it/150x80" width="150" height="80" alt=""></a>
+            <a href="#"><img class="mx-auto d-block" src="{{ company.logo }}" width="150" height="80" alt=""></a>
             <div class="card-body">
-              <p class="card-text"><a href="#">5 вакансий</a></p>
+              <p class="card-text"><a href="{% url 'companies' id=company.id %}">count вакансий</a></p>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
     </section>
   </main>

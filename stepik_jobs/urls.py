@@ -17,15 +17,15 @@ from django.urls import path
 
 from django.contrib import admin
 
-from jobs.views import MainView, VacanciesView, CompaniesView, JobsView, CatalogView
+from jobs.views import MainView, VacancyListView, CompanyView, JobView, SpecialtiesView
 
 
 urlpatterns = [
     path('', MainView.as_view(), name="main"),
-    path('vacancies/', VacanciesView.as_view(), name="vacancies"),
-    path('companies/<int:id>/', CompaniesView.as_view(), name="companies"),
-    path('jobs/<int:id>/', JobsView.as_view(), name="jobs"),
-    path('jobs/cat/<str:specialty>/', CatalogView.as_view(), name="speciality"),
+    path('vacancies/', VacancyListView.as_view(), name="vacancies"),
+    path('companies/<int:id>/', CompanyView.as_view(), name="companies"),
+    path('jobs/<int:id>/', JobView.as_view(), name="job"),
+    path('jobs/cat/<str:specialty_>/', SpecialtiesView.as_view(), name="specialty_url"),
 
     path('admin/', admin.site.urls),
 ]
