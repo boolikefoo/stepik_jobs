@@ -58,5 +58,10 @@ class JobView(View):
 
 class JobSendView(View):
     def post(self, request):
-        return render(request, '') 
+        return render(request, '', context)
+
+
+class SearchView(View):
+    def get(self, request):
+        return render(request, 'search.html', context=context) 
                     
