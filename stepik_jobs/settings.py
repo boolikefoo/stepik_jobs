@@ -127,4 +127,4 @@ STATICFILES_DIRS = [
     "/jobs/static/",
 ]
 
-MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'

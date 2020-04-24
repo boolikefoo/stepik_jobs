@@ -54,4 +54,9 @@ class JobView(View):
     def get(self, request, id):
         context.update({'job' : Vacancy.objects.get(id=id)})
         return render(request, 'vacancy.html', context=(context))    
+
+
+class JobSendView(View):
+    def post(self, request):
+        return render(request, '') 
                     

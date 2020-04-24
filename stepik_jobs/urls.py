@@ -16,8 +16,11 @@ Including another URLconf
 from django.urls import path
 
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static 
 
-from jobs.views import MainView, VacancyListView, CompanyView, JobView, SpecialtiesView
+from jobs.views import MainView, VacancyListView, CompanyView, JobView, SpecialtiesView, JobSendView
+from account.views import MyResumeView, MyCompanyView, MyResumeView, MyVacanciesView, MyVacancyView, UserLoginView, UserLogoutView, UserSignupView
 
 
 urlpatterns = [
@@ -26,6 +29,19 @@ urlpatterns = [
     path('companies/<int:id>/', CompanyView.as_view(), name="companies"),
     path('jobs/<int:id>/', JobView.as_view(), name="job"),
     path('jobs/cat/<str:specialty_>/', SpecialtiesView.as_view(), name="specialty_url"),
+    path('jobs/<int:id>/send', JobSendView.as_view(), name='send'),
+    path('myresume/', MyResumeView.as_view(), name='myresume'),
+    path('mycompany', MyCompanyView.as_view(), name='mycompany'),
+    path('mycompany/vacancies/', MyVacanciesView.as_view(), name='myvacancies'),
+    path('mycompany/vacancies/<int:id>', MyVacancyView.as_view(), name='myvacancy'),
+
+    path('signup/', UserSignupView.as_view(), name='signup'),
+    path('login/', UserLoginView.as_view(), name='login'),
+    path('logout/', UserLogoutView.as_view(), name='logout'),
 
     path('admin/', admin.site.urls),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
